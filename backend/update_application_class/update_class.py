@@ -13,4 +13,6 @@ for index, row in df.iterrows():
     d2 = datetime.datetime.today()
     if (d2 - d1).days >= 0 and (row['class'] == 3):
         df.at[index, 'class'] = 2
+
+# todo: imply database
 df.to_csv(os.path.realpath(r"../data/applications.csv"), index=False)

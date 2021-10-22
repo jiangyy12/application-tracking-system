@@ -1,10 +1,11 @@
 #importing required python libraries
-from flask import Flask, jsonify, request;
-from flask_cors import CORS, cross_origin;
-from selenium import webdriver;
-from bs4 import BeautifulSoup;
+from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
+from selenium import webdriver
+from bs4 import BeautifulSoup
 from itertools import islice
-from webdriver_manager.chrome import ChromeDriverManager;
+from webdriver_manager.chrome import ChromeDriverManager
+from backend.data.connection import query, insert
 import pandas as pd
 import json
 import csv
@@ -59,19 +60,17 @@ def search():
 # get data from the CSV file for rendering root page
 @app.route("/application", methods=['GET'])
 def getDataFromCSV():
-    path = "./data/applications.csv"
     try:
-        f = open(path, 'r',  encoding='utf-8')
-        rows = csv.reader(f)
+        results = query()
         result = []
-        for row in islice(rows, 1, None):
+        for row in results:
             if (len(row) == 5):
                 dic = {}
                 dic['jobTitle'] = row[0]
                 dic['companyName'] = row[1]
-                dic['date'] = row[2]
-                dic['class'] = row[3]
-                dic['id'] = row[4]
+                dic['date'] = row[2].strftime("%Y-%m-%d")
+                dic['class'] = str(row[3])
+                dic['id'] = str(row[4])
                 result.append(dic)
             
         json_str = json.dumps(result)
@@ -83,17 +82,34 @@ def getDataFromCSV():
 # write a new record to the CSV file 
 @app.route("/application", methods=['POST'])
 def editcsv():
-    path = "./data/applications.csv"
+    # todo: imply database
+    # path = "./data/applications.csv"
     csvTitle = ['jobTitle', 'companyName', 'date', 'class', 'id']
+    tables = ['application', 'job']
     application = request.get_json()['application']
-    newLine = []
+    data = {}
     for t in csvTitle:
-        newLine.append(application[t] if t in application else None)
+        if (t is 'jobTitle'):
+            data['jobName'] = application[t]
+        if (t is 'companyName'):
+            data['jobCompany'] = application[t]
+        if (t is 'date'):
+            data['jobReleaseDate'] = application[t]
+            data['updateTime'] = application[t]
+        if (t is 'class'):
+            data['applyStatus'] = application[t]
+            data['jobClass'] = application[t]
+        if (t is 'id'):
+            data['jobId'] = application[t]
+        # newLine.append(application[t] if t in application else None)
 
     try:
-        with open(path, 'a+', encoding='utf-8') as f:
-            writer = csv.writer(f, delimiter=',')
-            writer.writerow(newLine)
+        # with open(path, 'a+', encoding='utf-8') as f:
+        #     writer = csv.writer(f, delimiter=',')
+        #     writer.writerow(newLine)
+        for table in tables:
+            insert(table, data)
+
     except Exception as e: 
         print(e)
         exit(1)
