@@ -11,7 +11,7 @@
  Target Server Version : 80026
  File Encoding         : 65001
 
- Date: 22/10/2021 00:06:15
+ Date: 22/10/2021 00:50:03
 */
 
 SET NAMES utf8mb4;
@@ -40,6 +40,25 @@ INSERT INTO `application` VALUES (1, 4, '2021-08-01', 2);
 INSERT INTO `application` VALUES (1, 5, '2021-08-20', 4);
 INSERT INTO `application` VALUES (1, 6, '2021-08-30', 4);
 INSERT INTO `application` VALUES (1, 7, '2021-08-10', 2);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for item
+-- ----------------------------
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE `item` (
+  `itemId` int NOT NULL,
+  `userId` int NOT NULL,
+  `jobId` int NOT NULL,
+  `commentTime` datetime DEFAULT NULL,
+  `itemContent` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`itemId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- ----------------------------
+-- Records of item
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 -- ----------------------------
