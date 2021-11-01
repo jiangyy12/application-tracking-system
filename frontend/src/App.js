@@ -5,14 +5,15 @@ import React from 'react';
 import Sidebar from './sidebar/Sidebar'
 import ApplicationPage from './application/ApplicationPage'
 import SearchPage from './search/SearchPage'
-
+import {Login} from './auth/Login'
 
 export default class App extends React.Component {
   constructor(props){
     super(props)
     let mapRouter = {
       'SearchPage': <SearchPage/>,
-      'ApplicationPage' : <ApplicationPage/>
+      'ApplicationPage' : <ApplicationPage/>,
+      'Login': <Login/>
     }
     this.state ={
       currentPage: <ApplicationPage/>,
