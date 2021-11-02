@@ -115,6 +115,66 @@ def editcsv():
         exit(1)
     return jsonify('Create an application succeddfully!')
 
+
+@app.route("/school", methods=['GET'])
+def getDataFromDB2():
+    try:
+        results = querySchool()
+        result = []
+        for row in results:
+            if (len(row) == 5):
+                dic = {}
+                dic['programTitle'] = row[0]
+                dic['schoolName'] = row[1]
+                dic['date'] = row[2].strftime("%Y-%m-%d")
+                dic['class'] = str(row[3])
+                dic['id'] = str(row[4])
+                result.append(dic)
+
+        json_str = json.dumps(result)
+        return json_str
+    except Exception as e:
+        print(e)
+        exit(1)
+        
+ 
+@app.route("/school", methods=['POST'])
+def editDB2():
+    # todo: imply database
+    # path = "./data/applications.csv"
+    csvTitle = ['programTitle', 'schoolName', 'date', 'class', 'id']
+    tables = ['school', 'program']
+    application = request.get_json()['school']
+    data = {}
+    for t in csvTitle:
+        if (t is 'programTitle'):
+            data['programName'] = application[t]
+        if (t is 'schoolName'):
+            data['programSchool'] = application[t]
+        if (t is 'date'):
+            data['jobReleaseDate'] = application[t]
+            data['updateTime'] = application[t]
+        if (t is 'class'):
+            data['applyStatus'] = application[t]
+            data['jobClass'] = application[t]
+        if (t is 'id'):
+            data['programId'] = application[t]
+        # newLine.append(application[t] if t in application else None)
+
+    try:
+        # with open(path, 'a+', encoding='utf-8') as f:
+        #     writer = csv.writer(f, delimiter=',')
+        #     writer.writerow(newLine)
+        for table in tables:
+            insert(table, data)
+
+    except Exception as e:
+        print(e)
+        exit(1)
+    return jsonify('Create an school application succeddfully!')
+
+
+
 # get the biggest id in the CSV for creating a new application
 @app.route("/getNewId", methods=['GET'])
 def getNewId():
