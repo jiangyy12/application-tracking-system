@@ -4,14 +4,13 @@ import CardModal from './CardModal';
 import $ from 'jquery'
 
 
-
 export default class CardBoard extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            applications: [], 
+            applications: [],
             card_titles: [],
             card_class: [],
             showModal:false
@@ -25,25 +24,25 @@ export default class CardBoard extends Component {
     // get initial data to render the root page
     getInitData(){
         return $.ajax({
-                url: 'http://localhost:5000/application',
-                method: 'GET'
+            url: 'http://localhost:5000/applicationSummaryPage',
+            method: 'GET'
         })
     }
 
     componentDidMount(){
         // fetch the data only after this component is mounted
         this.getInitData()
-        .done((data) => {
-            data = JSON.parse(data);
-            let result = this.groupApplication(data);
-            let card_titles = this.createCardTitle(result);
-            let card_class = this.createCardClass(result);
-            this.setState({
-                applications: data, 
-                card_titles: card_titles,
-                card_class: card_class
+            .done((data) => {
+                data = JSON.parse(data);
+                let result = this.groupApplication(data);
+                let card_titles = this.createCardTitle(result);
+                let card_class = this.createCardClass(result);
+                this.setState({
+                    applications: data,
+                    card_titles: card_titles,
+                    card_class: card_class
+                })
             })
-        })
     }
 
     // the update function for child component
@@ -67,14 +66,14 @@ export default class CardBoard extends Component {
         }else{
             newApplications[application.id] = application
         }
-        
+
         // rerender the page to represent the update result
         let result = this.groupApplication(newApplications);
         let card_titles = this.createCardTitle(result);
         let card_class = this.createCardClass(result);
-        
+
         this.setState({
-            applications: newApplications, 
+            applications: newApplications,
             card_titles: card_titles,
             card_class: card_class,
             showModal:false,
@@ -99,7 +98,7 @@ export default class CardBoard extends Component {
                 application.id = newID
             }))
         }
-            
+
         this.setState({
             showModal: true,
             application: application,

@@ -79,6 +79,27 @@ def getDataFromCSV():
         print(e)
         exit(1)
 
+@app.route("/applicationSummaryPage", methods=['GET'])
+def getCompanySummaryDate():
+    try:
+        results = query_groupByCompany()
+        result = []
+        for row in results:
+            if (len(row) == 4):
+                dic = {}
+                dic['companyName'] = row[0]
+                dic['Waiting'] = row[1]
+                dic['Offer'] = row[2]
+                dic['Rejected'] = row[3]
+                result.append(dic)
+
+        json_str = json.dumps(result)
+        return json_str
+    except Exception as e:
+        print(e)
+        exit(1)
+
+
 # write a new record to the CSV file 
 @app.route("/application", methods=['POST'])
 def editcsv():
