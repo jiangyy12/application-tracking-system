@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: null,
 			message: null,
 			demo: [
 				{
@@ -20,7 +21,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
+			login: (email, password) =>{
+				const opts = {
+					method: 'POST',
+					headers: {
+					  "Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+					  "email": email,
+					  "password":password
+					})
+				  }
+				  try {
+					const resp = fetch('http://localhost:5000/token', opts)
+					if (resp.status !== 200){
+						alert("There has been some error");
+						return false
+					}
+					const data = resp.json();
+					console.log("this from the backend", data);
+					sessionStorage.setItem("token", data.access_token);
+					setStore({token: data.access_token})
+					return true;
+				  }
+				  catch(error){
+					  console.error("There was an error!!!", error);
+					}
+			}, 
 			getMessage: () => {
 				// fetching data from the backend
 				fetch(process.env.BACKEND_URL + "/api/hello")

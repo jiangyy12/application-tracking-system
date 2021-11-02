@@ -16,7 +16,7 @@ export default class App extends React.Component {
       'Login': <Login/>
     }
     this.state ={
-      currentPage: <ApplicationPage/>,
+      currentPage: <Login/>,
       mapRouter: mapRouter
     }
   };
