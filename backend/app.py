@@ -5,12 +5,18 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 from itertools import islice
 from webdriver_manager.chrome import ChromeDriverManager
-from backend.data.connection import query, insert
+from data.connection import query, insert
 import pandas as pd
 import json
+import os
 import csv
-
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
 app = Flask(__name__)
+app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET') # Change this!
+jwt = JWTManager(app)
 # make flask support CORS
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -129,6 +135,17 @@ def getNewId():
     except Exception as e: 
         print(e)
         exit(1)
+
+@app.route("/token", methods=['POST'])
+def create_token():
+    # data = json.loads(request.get_data())
+    # print(data)
+        email = request.json.get("email", None)
+        password = request.json.get("password", None)
+        if email != "test" or password != "test":
+            return jsonify({"msg": "Bad username or password"}), 401
+        access_token = create_access_token(identity=email)
+        return jsonify(access_token=access_token)
 
 if __name__ == "__main__":
     app.run()

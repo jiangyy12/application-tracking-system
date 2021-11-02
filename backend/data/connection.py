@@ -33,14 +33,14 @@ def connect():
 def query():
     try:
         # Connection = connect()
-        try:
-            with open('../database/SET_DATABASE.sql', 'r') as f:
-                with Connection.cursor() as cursor:
-                    cursor.execute(f.read(), multi=True)
-                Connection.commit()
-            print("Sourcing .sql file succeed!")
-        except:
-            print("Sourcing .sql file failed!")
+        # try:
+        #     with open('../database/SET_DATABASE.sql', 'r') as f:
+        #         with Connection.cursor() as cursor:
+        #             cursor.execute(f.read(), multi=True)
+        #         Connection.commit()
+        #     print("Sourcing .sql file succeed!")
+        # except:
+        #     print("Sourcing .sql file failed!")
 
         query = "SELECT jobName, jobCompany, updateTime, applyStatus, job.jobId " \
                 "FROM job, users, application " \
