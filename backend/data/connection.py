@@ -67,6 +67,35 @@ def query():
 
     Connection.close()
 
+            
+def querySchool():
+    try:
+
+        query = "SELECT programName, programSchool, updateTime, applyStatus, program.programId " \
+                "FROM program, users, school " \
+                "WHERE users.userId=school.userId AND program.programId=school.programId;"
+        cursor = Connection.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+        for row in results:
+
+            programName = row[0]
+            programSchool = row[1]
+            updateTime = row[2]
+            applyStatus = row[3]
+            programId = row[4]
+
+            print("programName=%s, programSchool=%s, updateTime=%s, applyStatus=%s, programId=%s"
+                  % (programName, programSchool, updateTime, applyStatus, programId))
+
+        return results
+
+
+    except conn.Error as err:
+        print("Item Query failed! Error number is: %s" %err.errno)
+
+    Connection.close()            
+
 
 def insert(tableName, data):
     try:
@@ -84,6 +113,13 @@ def insert(tableName, data):
                     "VALUES (%s, %s, %s, %s, %s);"
 
             value = (data['jobId'], data['jobName'], data['jobCompany'], data['jobReleaseDate'], data['jobClass'])
+            cursor = Connection.cursor()
+            cursor.execute(query, value)
+        elif (tableName == 'school'):
+            query = "INSERT INTO school (userId, programId, applyStatus, updateTime) " \
+                    "VALUES (%s, %s, %s, %s);"
+
+            value = ('123', data['programId'], data['applyStatus'], data['updateTime'])
             cursor = Connection.cursor()
             cursor.execute(query, value)
 
