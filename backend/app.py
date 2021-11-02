@@ -5,7 +5,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 from itertools import islice
 from webdriver_manager.chrome import ChromeDriverManager
-from data.connection import query, insert
+from data.connection import query, insert, count
 import pandas as pd
 import json
 import os
@@ -126,11 +126,12 @@ def editcsv():
 def getNewId():
     path = "./data/applications.csv"
     try:
-        f = open(path, 'r',  encoding='utf-8')
-        rows = csv.reader(f)
-        i = 0
-        for row in islice(rows, 1, None):
-            i += 1
+        # f = open(path, 'r',  encoding='utf-8')
+        # rows = csv.reader(f)
+        # i = 0
+        # for row in islice(rows, 1, None):
+        #     i += 1
+        i = count() + 1
         return jsonify(i)
     except Exception as e: 
         print(e)

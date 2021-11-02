@@ -67,6 +67,21 @@ def query():
 
     Connection.close()
 
+def count():
+    try:
+        query = "SELECT COUNT(*) FROM job;"
+        cursor = Connection.cursor()
+        cursor.execute(query)
+        result = cursor.fetchall()
+        for row in result:
+            count = row[0] + 1
+
+        return count
+
+    except conn.Error as err:
+        print("Query failed! Error number is: %s" % err.errno)
+
+
 
 def insert(tableName, data):
     try:
@@ -76,7 +91,7 @@ def insert(tableName, data):
 
             # Gaolin: Since there was no user management before, I temporarily use '123' as the userId when inserting application table.
             # todo: record real userId
-            value = ('123', data['jobId'], data['applyStatus'], data['updateTime'])
+            value = ('1', data['jobId'], data['applyStatus'], data['updateTime'])
             cursor = Connection.cursor()
             cursor.execute(query, value)
         elif (tableName == 'job'):
