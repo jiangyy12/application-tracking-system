@@ -13,7 +13,7 @@ script:
     - python -m pytest
     - cd ..
     - coverage run --source=backend -m pytest backend
-#    - coveralls --service=github
-branches:
-    only:
-        - test
+    - coveralls --service=github
+#branches:
+#    only:
+#        - test
