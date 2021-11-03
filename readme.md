@@ -70,6 +70,7 @@ pip install -U flask-cors
 pip install selenium
 pip install bs4
 pip install webdriver-manager
+pip install flask-jwt-extended
 ```
 
 * Now, you can start the backend by running `flask run` on your console
