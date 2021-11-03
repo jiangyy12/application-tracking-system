@@ -35,7 +35,7 @@ Here each table represents the multiple stages of the application process. Curre
 Flake8, ESlint, Prettier
 
 ## Automated Analysis Tool used:
-[Code Climate](https://codeclimate.com/github/yliang123/TeamFormationAssistant)
+[Code Climate](https://codeclimate.com/github/jiangyy12/application-tracking-system)
 
 ## Installation:
 * Clone our project
