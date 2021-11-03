@@ -31,10 +31,10 @@ Here each table represents the multiple stages of the application process. Curre
 ** Node.Js
 ** Flask 
 
-### Linting: Code Styling, Formatting and Syntax Checking:
+## Linting: Code Styling, Formatting and Syntax Checking:
 Flake8, ESlint, Prettier
 
-### Automated Analysis Tool used:
+## Automated Analysis Tool used:
 [Code Climate](https://codeclimate.com/github/yliang123/TeamFormationAssistant)
 
 ## Installation:
