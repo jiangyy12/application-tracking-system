@@ -5,7 +5,7 @@ Connection = conn.connect(
             host="localhost",
             port="3306",
             user="root",
-            password="",
+            password="Kwok1998",
             database="applicationtrackingsystem"
         )
 print("Connect to the local database outside method success!")
@@ -16,7 +16,7 @@ def connect():
             host="localhost",
             port="3306",
             user="root",
-            password="",
+            password="Kwok1998",
             database="applicationtrackingsystem"
         )
         print("Connect to the local database success!")
@@ -67,7 +67,7 @@ def query():
 
     Connection.close()
 
-<<<<<<< HEAD
+
 def count():
     try:
         query = "SELECT COUNT(*) FROM job;"
@@ -82,7 +82,7 @@ def count():
     except conn.Error as err:
         print("Query failed! Error number is: %s" % err.errno)
 
-=======
+
 def query_groupByCompany():
     try:
         # Connection = connect()
@@ -150,7 +150,6 @@ def querySchool():
         print("Item Query failed! Error number is: %s" %err.errno)
 
     Connection.close()
->>>>>>> 425faa4f9a9171c9d7fb1d587eff7f9da6d6c37a
 
 
 def insert(tableName, data):
