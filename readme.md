@@ -31,6 +31,12 @@ Here each table represents the multiple stages of the application process. Curre
 ** Node.Js
 ** Flask 
 
+### Linting: Code Styling, Formatting and Syntax Checking:
+Flake8, ESlint, Prettier
+
+### Automated Analysis Tool used:
+[Code Climate](https://codeclimate.com/github/yliang123/TeamFormationAssistant)
+
 ## Installation:
 * Clone our project
 * Before installation, we recommand you to open two consoles, one for frontend and the other for backend.
