@@ -5,7 +5,7 @@ Connection = conn.connect(
             host="localhost",
             port="3306",
             user="root",
-            password="Kwok1998",
+            password="",
             database="applicationtrackingsystem"
         )
 print("Connect to the local database outside method success!")
@@ -16,7 +16,7 @@ def connect():
             host="localhost",
             port="3306",
             user="root",
-            password="Kwok1998",
+            password="",
             database="applicationtrackingsystem"
         )
         print("Connect to the local database success!")
