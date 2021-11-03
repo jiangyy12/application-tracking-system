@@ -7,16 +7,12 @@ import ApplicationPage from './application/ApplicationPage'
 import SearchPage from './search/SearchPage'
 import ApplicationSummaryPage from "./application/ApplicationSummaryPage"
 
-// import NotePage from './note/NotePage'
-import SchoolPage from './school/SchoolPage'
 
 export default class App extends React.Component {
   constructor(props){
     super(props)
     let mapRouter = {
       'SearchPage': <SearchPage/>,
-      // 'NotePage': <NotePage/>,
-      'SchoolPage': <SchoolPage/>,
       'ApplicationPage' : <ApplicationPage/>,
       'ApplicationSummaryPage' : <ApplicationSummaryPage/>
     }

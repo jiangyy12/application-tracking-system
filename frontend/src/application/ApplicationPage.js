@@ -24,7 +24,7 @@ export default class CardBoard extends Component {
     // get initial data to render the root page
     getInitData(){
         return $.ajax({
-                url: 'http://localhost:5000/application',
+                url: 'http://127.0.0.1:5000/application',
                 method: 'GET'
         })
     }

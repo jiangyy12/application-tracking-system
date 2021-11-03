@@ -5,7 +5,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 from itertools import islice
 from webdriver_manager.chrome import ChromeDriverManager
-from data.connection import query, insert, count
+from data.connection import query, insert, count, query_groupByCompany
 import pandas as pd
 import json
 import os
@@ -86,7 +86,7 @@ def getDataFromCSV():
         exit(1)
 
 @app.route("/applicationSummaryPage", methods=['GET'])
-def getCompanySummaryDate():
+def getCompanySummaryPage():
     try:
         results = query_groupByCompany()
         result = []
@@ -99,7 +99,8 @@ def getCompanySummaryDate():
                 dic['Rejected'] = row[3]
                 result.append(dic)
 
-        json_str = json.dumps(result)
+        # json_str = json.dumps(result)
+        json_str = jsonify(result)
         return json_str
     except Exception as e:
         print(e)
