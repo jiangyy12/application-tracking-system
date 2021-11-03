@@ -1,0 +1,16 @@
+language: python
+python:
+    - "3.7"
+install:
+    - pip install -r backend/requirements.txt
+    - cd frontend
+    - npm install || true
+    - cd ../
+    - cd backend
+    - flask run
+script:
+    - pwd
+    - python -m pytest
+    - cd ..
+    - coverage run --source=backend -m pytest backend
+#    - coveralls --service=github
