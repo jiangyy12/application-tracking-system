@@ -31,6 +31,12 @@ Here each table represents the multiple stages of the application process. Curre
 ** Node.Js
 ** Flask 
 
+## Linting: Code Styling, Formatting and Syntax Checking:
+Flake8, ESlint, Prettier
+
+## Automated Analysis Tool used:
+[Code Climate](https://codeclimate.com/github/yliang123/TeamFormationAssistant)
+
 ## Installation:
 * Clone our project
 * Before installation, we recommand you to open two consoles, one for frontend and the other for backend.
@@ -70,6 +76,7 @@ pip install -U flask-cors
 pip install selenium
 pip install bs4
 pip install webdriver-manager
+pip install flask-jwt-extended
 ```
 
 * Now, you can start the backend by running `flask run` on your console
