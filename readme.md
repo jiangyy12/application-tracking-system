@@ -27,19 +27,19 @@ Here each table represents the multiple stages of the application process. Curre
 
 ## Version Improvement:
 
-##### Implemented LOGIN page. (NEW Feature)
+#### Implemented Login page. (NEW Feature)
 
 Get jwt token from backend when users login successfully and store it in the session storage.
 
-##### Implemented Application Summary page. (NEW Feature)
+#### Implemented Application Summary page. (NEW Feature)
 
 Use application summary page to show application progress summary of each company.
 
-##### Implemented School Application page. (NEW Feature)
+#### Implemented School Application page. (NEW Feature)
 
 Use school application page to show application progress of each school.
 
-##### Implemented Database. (Improvement)
+#### Implemented Database. (Improvement)
 
 Implemented database (MySQL) on the basis of the original project to replace the original way of managing data through .csv files.
 
