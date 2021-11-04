@@ -1,3 +1,5 @@
 .DS_Store
 package-lock 3.json
 frontend/yarn.lock
+*.pyc
+.idea
