@@ -67,6 +67,72 @@ def query():
 
     Connection.close()
 
+def querySchool():
+    try:
+        # Connection = connect()
+        # try:
+        #     with open('../database/SET_DATABASE.sql', 'r') as f:
+        #         with Connection.cursor() as cursor:
+        #             cursor.execute(f.read(), multi=True)
+        #         Connection.commit()
+        #     print("Sourcing .sql file succeed!")
+        # except:
+        #     print("Sourcing .sql file failed!")
+
+        query = "SELECT programName, programSchool, updateTime, applyStatus, program.programId " \
+                "FROM program, users, school " \
+                "WHERE users.userId=school.userId AND program.programId=school.programId;"
+        cursor = Connection.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+        for row in results:
+
+            programName = row[0]
+            programSchool = row[1]
+            updateTime = row[2]
+            applyStatus = row[3]
+            programId = row[4]
+
+            print("programName=%s, programSchool=%s, updateTime=%s, applyStatus=%s, programId=%s"
+                  % (programName, programSchool, updateTime, applyStatus, programId))
+
+        return results
+
+
+    except conn.Error as err:
+        print("School Query failed! Error number is: %s" %err.errno)
+
+    Connection.close()
+
+def queryItem():
+    try:
+
+        query = "SELECT jobName, jobCompany, commentTime, itemContent, job.jobId " \
+                "FROM job, users, item " \
+                "WHERE users.userId=item.userId AND job.jobId=item.jobId;"
+        cursor = Connection.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+        for row in results:
+
+            jobName = row[0]
+            jobCompany = row[1]
+            commentTime = row[2]
+            itemContent = row[3]
+            jobId = row[4]
+
+            print("jobName=%s, jobCompany=%s, commentTime=%s, itemContent=%s, jobId=%s"
+                  % (jobName, jobCompany, commentTime, itemContent, jobId))
+
+        return results
+
+
+    except conn.Error as err:
+        print("Item Query failed! Error number is: %s" %err.errno)
+
+    Connection.close()
+
+
 def count():
     try:
         query = "SELECT COUNT(*) FROM job;"
@@ -81,6 +147,20 @@ def count():
     except conn.Error as err:
         print("Query failed! Error number is: %s" % err.errno)
 
+
+def countProgram():
+    try:
+        query = "SELECT COUNT(*) FROM program;"
+        cursor = Connection.cursor()
+        cursor.execute(query)
+        result = cursor.fetchall()
+        for row in result:
+            count = row[0] + 1
+
+        return count
+
+    except conn.Error as err:
+        print("Query failed! Error number is: %s" % err.errno)
 
 
 def insert(tableName, data):
@@ -99,6 +179,22 @@ def insert(tableName, data):
                     "VALUES (%s, %s, %s, %s, %s);"
 
             value = (data['jobId'], data['jobName'], data['jobCompany'], data['jobReleaseDate'], data['jobClass'])
+            cursor = Connection.cursor()
+            cursor.execute(query, value)
+
+        elif (tableName == 'school'):
+            query = "INSERT INTO school (userId, programId, applyStatus, updateTime) " \
+                    "VALUES (%s, %s, %s, %s);"
+
+            value = ('1', data['programId'], data['applyStatus'], data['updateTime'])
+            cursor = Connection.cursor()
+            cursor.execute(query, value)
+
+        elif (tableName == 'program'):
+            query = "INSERT INTO program (programId, programName, programSchool, programReleaseDate, programClass) " \
+                    "VALUES (%s, %s, %s, %s, %s);"
+
+            value = (data['programId'], data['programName'], data['programSchool'], data['programReleaseDate'], data['programClass'])
             cursor = Connection.cursor()
             cursor.execute(query, value)
 
