@@ -23,4 +23,7 @@ install:
     
 script:
    - python test_api.py test
+   
+after_success:
+  - coveralls
 #
