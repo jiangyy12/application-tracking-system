@@ -25,6 +25,24 @@ https://user-images.githubusercontent.com/43064854/135554649-9f5e8f21-ff12-45c9-
 ## Explanation:
 Here each table represents the multiple stages of the application process. Currently we are including 4 basic steps which are  job applied, job you are willing to apply without referral, job which has rejected you and the the jobs you are waiting for referral. One can edit any details at any stage in any table during the whole process. 
 
+## Version Improvement:
+
+##### Implemented LOGIN page. (NEW Feature)
+
+Get jwt token from backend when users login successfully and store it in the session storage.
+
+##### Implemented Application Summary page. (NEW Feature)
+
+Use application summary page to show application progress summary of each company.
+
+##### Implemented School Application page. (NEW Feature)
+
+Use school application page to show application progress of each school.
+
+##### Implemented Database. (Improvement)
+
+Implemented database (MySQL) on the basis of the original project to replace the original way of managing data through .csv files.
+
 ## Technologies Used:
 
 ** Python
