@@ -13,11 +13,14 @@ services:
 
 # install dependencies
 before_install:
-  - mysql -e 'CREATE DATABASE test DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
-  - mysql -e 'CREATE DATABASE dev DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
+  - mysql -e 'DROP DATABASE IF EXISTS applicationtrackingsystem'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS applicationtrackingsystem;'  
+  - mysql -u root --default-character-set=utf8 applicationtrackingsystem < database/SET_DATABASE.sql
+  - cd backend
 
 install:
   - pip3 install -r requirements.txt
     
 script:
-  - python manage.py test
+  - python test_api.py test
+#
