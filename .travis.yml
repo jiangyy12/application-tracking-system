@@ -15,7 +15,7 @@ services:
 before_install:
   - mysql -e 'DROP DATABASE IF EXISTS applicationtrackingsystem'
   - mysql -e 'CREATE DATABASE IF NOT EXISTS applicationtrackingsystem;'  
-  - mysql -u root --default-character-set=utf8 koalatest < database/SET_DATABASE.sql
+  - mysql -u root --default-character-set=utf8 applicationtrackingsystem < database/SET_DATABASE.sql
   - cd backend
 
 install:
