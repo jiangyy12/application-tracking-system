@@ -43,10 +43,39 @@
 <br>
 
 
+**Function: /school**<br>
+**Method:get**<br>
+**Description**: Get all data stored in the table “program”, "users" and "school"<br>
+**Inputs**: None<br>
+**Outputs**: 
+- programTitle
+- schoolName
+- date 
+- class
+- id
+<br>
+<br>
+
+
 
 **Function: /application**<br>
 **Method:post**<br>
 **Description**: Writing a new application record.<br>
+**Inputs**: 
+- programTitle
+- schoolName
+- date 
+- class
+- id
+
+**Outputs**: None
+<br>
+<br>
+
+
+**Function: /school**<br>
+**Method:post**<br>
+**Description**: Writing a new school application record.<br>
 **Inputs**: 
 - jobTitle 
 - companyName 
@@ -57,7 +86,6 @@
 **Outputs**: None
 <br>
 <br>
-
 
 
 **Function: token**<br>
