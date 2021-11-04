@@ -1,6 +1,7 @@
 <h1>API_Instruction</h1>
 
 **Function: /search**<br>
+**Method:get**<br>
 **Description**: Return the search results from Google using the keywords user input.<br>
 **Inputs**:
 - Keywords
@@ -15,7 +16,8 @@
 
 
 
-**Function: application/get**<br>
+**Function: /application**<br>
+**Method:get**<br>
 **Description**: Get all data stored in the table “job”, "users" and "application"<br>
 **Inputs**: None<br>
 **Outputs**: 
@@ -28,7 +30,8 @@
 <br>
 
 
-**Function: applicationSummaryPage/get**<br>
+**Function: /applicationSummaryPage**<br>
+**Method:get**<br>
 **Description**: Show the application statistics of each company, using the table “job”<br>
 **Inputs**: None<br>
 **Outputs**: 
@@ -41,7 +44,8 @@
 
 
 
-**Function: application/post**<br>
+**Function: /application**<br>
+**Method:post**<br>
 **Description**: Writing a new application record.<br>
 **Inputs**: 
 - jobTitle 
@@ -56,7 +60,8 @@
 
 
 
-**Function: token/post**<br>
+**Function: token**<br>
+**Method:post**<br>
 **Description**: When a new user is signing up, writing a new token record.<br>
 **Inputs**: 
 - email
