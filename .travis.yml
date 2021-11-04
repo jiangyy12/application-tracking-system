@@ -15,9 +15,10 @@ services:
 before_install:
   - mysql -e 'CREATE DATABASE test DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
   - mysql -e 'CREATE DATABASE dev DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
+  - cd backend
 
 install:
   - pip3 install -r requirements.txt
     
 script:
-  - python manage.py test
+  - python test_api.py test
