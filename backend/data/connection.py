@@ -67,6 +67,45 @@ def query():
 
     Connection.close()
 
+def query_groupByCompany():
+    try:
+        # Connection = connect()
+        # try:
+        #     with open('../database/SET_DATABASE.sql', 'r') as f:
+        #         with Connection.cursor() as cursor:
+        #             cursor.execute(f.read(), multi=True)
+        #         Connection.commit()
+        #     print("Sourcing .sql file succeed!")
+        # except:
+        #     print("Sourcing .sql file failed!")
+
+        query = "SELECT jobCompany, count(case when applyStatus = 2 then 1 end) as Waiting," \
+                "count(case when applyStatus = 3 then 1 end) as Offer," \
+                "count(case when applyStatus = 4 then 1 end) as Rejected " \
+                "FROM job, application " \
+                "WHERE job.jobId = application.jobId " \
+                "GROUP BY jobCompany;"
+        cursor = Connection.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+        for row in results:
+
+            companyName = row[0]
+            Waiting = row[1]
+            Offer = row[2]
+            Rejected = row[3]
+
+            print("companyName=%s, Waiting=%s, Offer=%s, Rejected=%s"
+                  % (companyName, Waiting, Offer, Rejected))
+
+        return results
+
+
+    except conn.Error as err:
+        print("Query failed! Error number is: %s" %err.errno)
+
+    Connection.close()
+
 def querySchool():
     try:
         # Connection = connect()

@@ -4,6 +4,7 @@ import './static/App.css';
 import React from 'react';
 import Sidebar from './sidebar/Sidebar'
 import ApplicationPage from './application/ApplicationPage'
+import ApplicationSummaryPage from "./application/ApplicationSummaryPage"
 import SchoolPage from './school/SchoolPage'
 import NotePage from './note/NotePage'
 import SearchPage from './search/SearchPage'
@@ -15,6 +16,7 @@ export default class App extends React.Component {
     let mapRouter = {
       'SearchPage': <SearchPage/>,
       'ApplicationPage' : <ApplicationPage/>,
+      'ApplicationSummaryPage' : <ApplicationSummaryPage/>,
       'SchoolPage' : <SchoolPage/>,
       'NotePage' : <NotePage/>,
       'Login': <Login/>
