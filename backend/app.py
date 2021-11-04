@@ -5,7 +5,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 from itertools import islice
 from webdriver_manager.chrome import ChromeDriverManager
-from data.connection import query, insert, count, querySchool, countProgram
+from data.connection import query, insert, count, querySchool, countProgram, queryItem
 import pandas as pd
 import json
 import os
@@ -177,6 +177,27 @@ def editDB():
         print(e)
         exit(1)
     return jsonify('Create an school application succeddfully!')
+
+@app.route("/note", methods=['GET'])
+def getDataFromDB2():
+    try:
+        results = queryItem()
+        result = []
+        for row in results:
+            if (len(row) == 5):
+                dic = {}
+                dic['jobName'] = row[0]
+                dic['jobCompany'] = row[1]
+                dic['commentTime'] = row[2].strftime("%Y-%m-%d")
+                dic['class'] = str(row[3])
+                dic['id'] = str(row[4])
+                result.append(dic)
+
+        json_str = json.dumps(result)
+        return json_str
+    except Exception as e:
+        print(e)
+        exit(1)
 
 # get the biggest id in the CSV for creating a new application
 @app.route("/getNewId", methods=['GET'])

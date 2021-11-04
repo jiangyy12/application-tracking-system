@@ -5,6 +5,7 @@ import React from 'react';
 import Sidebar from './sidebar/Sidebar'
 import ApplicationPage from './application/ApplicationPage'
 import SchoolPage from './school/SchoolPage'
+import NotePage from './note/NotePage'
 import SearchPage from './search/SearchPage'
 import {Login} from './auth/Login'
 
@@ -15,6 +16,7 @@ export default class App extends React.Component {
       'SearchPage': <SearchPage/>,
       'ApplicationPage' : <ApplicationPage/>,
       'SchoolPage' : <SchoolPage/>,
+      'NotePage' : <NotePage/>,
       'Login': <Login/>
     }
     this.state ={

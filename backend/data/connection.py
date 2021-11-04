@@ -104,6 +104,34 @@ def querySchool():
 
     Connection.close()
 
+def queryItem():
+    try:
+
+        query = "SELECT jobName, jobCompany, commentTime, itemContent, job.jobId " \
+                "FROM job, users, item " \
+                "WHERE users.userId=item.userId AND job.jobId=item.jobId;"
+        cursor = Connection.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+        for row in results:
+
+            jobName = row[0]
+            jobCompany = row[1]
+            commentTime = row[2]
+            itemContent = row[3]
+            jobId = row[4]
+
+            print("jobName=%s, jobCompany=%s, commentTime=%s, itemContent=%s, jobId=%s"
+                  % (jobName, jobCompany, commentTime, itemContent, jobId))
+
+        return results
+
+
+    except conn.Error as err:
+        print("Item Query failed! Error number is: %s" %err.errno)
+
+    Connection.close()
+
 
 def count():
     try:

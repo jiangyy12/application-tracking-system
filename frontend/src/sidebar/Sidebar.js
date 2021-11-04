@@ -23,6 +23,9 @@ export default class Sidebar extends Component {
                     <div onClick={() => this.props.switchPage('SchoolPage')}>
                         <i className="fas fa-sort-alpha-down left-nav-icon"></i>
                     </div>
+                    <div onClick={() => this.props.switchPage('NotePage')}>
+                        <i className="fas fa-sort-alpha-asc left-nav-icon"></i>
+                    </div>
                 </div>
             </div>
         );
