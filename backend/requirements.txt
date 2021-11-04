@@ -25,5 +25,4 @@ selenium==3.141.0
 toml==0.10.2
 urllib3==1.26.2
 webdriver-manager==3.4.2
-coverage run --source=mypkg setup.py test
 coveralls
