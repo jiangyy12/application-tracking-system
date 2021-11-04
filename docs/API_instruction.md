@@ -1,46 +1,5 @@
 <h1>API_Instruction</h1>
 
-**Function:api/projects/post**<br>
-**Description**: When a new project is created, insert the information of new project into the table “project”<br>
-**Inputs**:
-- ProjectName 
-- ProjectEndDate 
-- ProjectTeamSize 
-- Budget 
-- Tools 
-- Priority
-- IsAssignmentComplete：whether the project is assigned to employees
-
-**Outputs**: None
-<br>
-<br>
-
-
-**Function: api/projects/get**<br>
-**Description**: Query all data stored in the table “Project”<br>
-**Inputs**: None<br>
-**Outputs**: 
-- ProjectId 
-- ProjectName 
-- ProjectEndDate 
-- ProjectTeamSize 
-- Budget 
-- Tools 
-- Priority 
-- IsAssignmentComplete：whether the project is assigned to employees
-<br>
-<br>
-
-**Function: api/teams**<br>
-**Description**: Query all data in the table”Team”<br>
-**Inputs**: None<br>
-**Outputs**: 
-- MemberName 
-- ProjectName
-<br>
-<br>
-
-
 **Function: /search**<br>
 **Description**: Return the search results from Google using the keywords user input.<br>
 **Inputs**:
@@ -74,9 +33,9 @@
 **Inputs**: None<br>
 **Outputs**: 
 - companyName 
-- Waiting 
-- Offer 
-- Rejected
+- Waiting: the number of application in the status "Waiting"
+- Offer: the number of application in the status "Offer"
+- Rejected: the number of application in the status "Rejected"
 <br>
 <br>
 
@@ -90,6 +49,7 @@
 - date 
 - class
 - id
+
 **Outputs**: None
 <br>
 <br>
