@@ -42,6 +42,34 @@ INSERT INTO `application` VALUES (1, 6, '2021-08-30', 4);
 INSERT INTO `application` VALUES (1, 7, '2021-08-10', 2);
 COMMIT;
 
+
+
+-- ----------------------------
+-- Table structure for school
+-- ----------------------------
+DROP TABLE IF EXISTS `school`;
+CREATE TABLE `school` (
+                               `userId` int NOT NULL,
+                               `programId` int NOT NULL,
+                               `updateTime` date DEFAULT NULL,
+                               `applyStatus` int NOT NULL COMMENT '1: Wish list 2: Applied 3: Waiting list 4: Rejected',
+                               PRIMARY KEY (`userId`,`programId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- ----------------------------
+-- Records of school
+-- ----------------------------
+BEGIN;
+INSERT INTO `school` VALUES (1, 1, '2021-09-01', 1);
+INSERT INTO `school` VALUES (1, 2, '2021-09-02', 1);
+INSERT INTO `school` VALUES (1, 3, '2021-07-10', 3);
+INSERT INTO `school` VALUES (1, 4, '2021-08-01', 2);
+INSERT INTO `school` VALUES (1, 5, '2021-08-20', 4);
+INSERT INTO `school` VALUES (1, 6, '2021-08-30', 4);
+INSERT INTO `school` VALUES (1, 7, '2021-08-10', 2);
+COMMIT;
+
+
 -- ----------------------------
 -- Table structure for item
 -- ----------------------------
@@ -87,6 +115,35 @@ INSERT INTO `job` VALUES (5, 'Software Engineer', 'Google', '2020-10-08', 3, NUL
 INSERT INTO `job` VALUES (6, 'Frontend Intern', 'Google', '2020-10-07', 1, NULL);
 INSERT INTO `job` VALUES (7, 'Software Engineer', 'Red Hat', '2020-10-06', 2, NULL);
 INSERT INTO `job` VALUES (8, 'Software Engineer', 'Red Hat', '2020-10-05', 3, NULL);
+COMMIT;
+
+
+-- ----------------------------
+-- Table structure for program
+-- ----------------------------
+DROP TABLE IF EXISTS `program`;
+CREATE TABLE `program` (
+                       `programId` int NOT NULL,
+                       `programName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                       `programSchool` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                       `programReleaseDate` date DEFAULT NULL,
+                       `programClass` int DEFAULT NULL,
+                       `programUrl` varchar(255) DEFAULT NULL,
+                       PRIMARY KEY (`programId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- ----------------------------
+-- Records of program
+-- ----------------------------
+BEGIN;
+INSERT INTO `program` VALUES (1, 'Computer Science', 'NCSU', '2020-10-01', 1, NULL);
+INSERT INTO `program` VALUES (2, 'Civil Engineer', 'UNC', '2020-10-02', 2, NULL);
+INSERT INTO `program` VALUES (3, 'Financial Engineer', 'Duke', '2020-10-03', 3, NULL);
+INSERT INTO `program` VALUES (4, 'Financial Engineer', 'NCSU', '2020-10-09', 4, NULL);
+INSERT INTO `program` VALUES (5, 'Computer Science', 'UNC', '2020-10-08', 3, NULL);
+INSERT INTO `program` VALUES (6, 'Computer Science', 'NCSU', '2020-10-07', 1, NULL);
+INSERT INTO `program` VALUES (7, 'Computer Science', 'CMU', '2020-10-06', 2, NULL);
+INSERT INTO `program` VALUES (8, 'Society Science', 'Duke', '2020-10-05', 3, NULL);
 COMMIT;
 
 -- ----------------------------
