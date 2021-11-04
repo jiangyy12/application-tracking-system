@@ -1,19 +1,23 @@
+sudo: enabled
+
 language: python
+
 python:
-    - "3.7"
+  - "3.6"
+
+os:
+  - linux
+
+services:
+  - mysql
+
+# install dependencies
+before_install:
+  - mysql -e 'CREATE DATABASE test DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
+  - mysql -e 'CREATE DATABASE dev DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
+
 install:
-    - pip install -r backend/requirements.txt
-    - cd frontend
-    - npm install || true
-    - cd ../
-    - cd backend
-    - flask run
+  - pip3 install -r requirements.txt
+    
 script:
-    - pwd
-    - python -m pytest
-    - cd ..
-    - coverage run --source=backend -m pytest backend
-    - coveralls --service=github
-#branches:
-#    only:
-#        - test
+  - python manage.py test
