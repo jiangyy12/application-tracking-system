@@ -28,6 +28,18 @@ class Api(unittest.TestCase):
         home = self.app.get('/')
         self.assertIn('Hello World!', str(home.data))
 
+    def test_search(self):
+        search = self.app.get('/search')
+        self.assertEqual(search.status_code, 200)
+
+    def test_application_get(self):
+        application = self.app.get('/application')
+        self.assertEqual(application.status_code, 200)
+
+    def test_applicaiton_post(self):
+        application = self.app.post('/application')
+        self.assertEqual(application.status_code, 200)
+
 
 if __name__ == "__main__":
     unittest.main()
