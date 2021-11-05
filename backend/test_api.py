@@ -15,5 +15,5 @@ class Api(unittest.TestCase):
         self.connection = connection
 
     def test_hello(self):
-        response = requests.get("http://localhost:5000")
+        response = requests.get("/")
         self.assertEqual(response.status_code, 200)
