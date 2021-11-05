@@ -3,6 +3,10 @@ language: python
 python:
     - "3.7"
 
+env:
+  global:
+    - CODECOV_TOKEN='f8c5eff3-c7b2-440f-8540-bf6a7330b822'
+
 services:
     - mysql
 
@@ -21,8 +25,7 @@ before_script:
   - jobs
 
 script:
-    - python -m pytest -v
-    - pytest --cov=./ --cov-report=xml
+    - pytest -v backend --cov=./ --cov-report=xml
 
 after_success:
     - codecov
