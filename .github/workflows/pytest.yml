@@ -1,34 +1,20 @@
-
-name: PyTest
-
-on:
-  push:
-    branches:
-      - "main"
-
+name: Workflow for Codecov example-python
+on: [push, pull_request]
 jobs:
-  build:
-
+  run:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest pytest-cov coverage
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        pip install -r ./backend/requirements.txt
-    - name: Test with pytest, upload to codecov
-      run: |
-        cd ./backend
-        pytest --cov-report xml:cov.xml --cov=./ ./
-    - name: "Upload coverage to Codecov"
-      uses: codecov/codecov-action@v1
-      with:
-        fail_ci_if_error: true
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt
+      - name: Run tests and collect coverage
+        run: |
+          coverage run backend/test_api.py
+          coverage xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
