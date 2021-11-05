@@ -3,6 +3,7 @@ python:
     - "3.7"
 install:
     - pip install -r backend/requirements.txt
+    - pip install codecov
     - cd frontend
     - npm install || true
     - cd ../
@@ -19,3 +20,9 @@ script:
     - cd ..
     - coverage run --source=backend -m pytest backend
     - coveralls --service=github
+after_success:
+    - codecov
+deploy:
+  - provider: heroku
+    api_key: 3f7a58cc-5c30-4f84-a90f-5225109c9a6e
+    app: application-tracking-system
