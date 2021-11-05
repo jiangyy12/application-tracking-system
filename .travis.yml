@@ -21,7 +21,9 @@ before_install:
 install:
   - pip3 install -r requirements.txt
 script:
-    flask test
+    - nohup flask run 
+    - python -m pytest
+
 #  - pytest
    
 after_success:
