@@ -6,7 +6,7 @@
 [![Build Status](https://app.travis-ci.com/jiangyy12/application-tracking-system.svg?branch=main)](https://app.travis-ci.com/jiangyy12/application-tracking-system)
 #      J-Tracker - Your Job Tracking Assistant
 
-
+Click this picture to open the procedure video.
 [![](https://github.com/lokesh45/TeamFormationAssistant/blob/master/Assistant.png)](https://youtu.be/J_P4uTz7U9s)
 
 
