@@ -2,7 +2,7 @@ import mysql.connector as conn
 from mysql.connector import errorcode
 
 Connection = conn.connect(
-            host="localhost",
+            host="127.0.0.1",
             port="3306",
             user="root",
             password="",
@@ -13,7 +13,7 @@ print("Connect to the local database outside method success!")
 def connect():
     try:
         Connection = conn.connect(
-            host="localhost",
+            host="127.0.0.1",
             port="3306",
             user="root",
             password="",

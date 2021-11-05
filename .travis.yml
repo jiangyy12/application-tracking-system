@@ -1,34 +1,31 @@
-sudo: enabled
-
 language: python
 
 python:
-  - "3.6"
-
-os:
-  - linux
+    - "3.7"
 
 services:
-  - mysql
+    - mysql
 
-# install dependencies
 before_install:
   - mysql -e 'DROP DATABASE IF EXISTS applicationtrackingsystem'
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS applicationtrackingsystem;'  
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS applicationtrackingsystem;'
   - mysql -u root --default-character-set=utf8 applicationtrackingsystem < database/SET_DATABASE.sql
   - cd backend
 
 install:
   - pip3 install -r requirements.txt
-  
+
 before_script:
   - nohup flask run &
   - jobs
+
 script:
     - python -m pytest -v
 
-#  - pytest
-   
 after_success:
-  - coveralls
-##
+    - codecov
+
+deploy:
+  - provider: heroku
+    api_key: 3f7a58cc-5c30-4f84-a90f-5225109c9a6e
+    app: application-tracking-system
