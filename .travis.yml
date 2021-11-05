@@ -22,8 +22,8 @@ install:
   - pip3 install -r requirements.txt
   
 before_script:
-  - nohup flask run 
-  - curl http://localhost:5000
+  - nohup flask run &
+  - jobs
 script:
     - python -m pytest -v
 
