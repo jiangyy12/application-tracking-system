@@ -4,6 +4,7 @@
 ![GitHub issues](https://img.shields.io/github/issues-closed/prithvish-doshi-17/application-tracking-system)
 ![GitHub top language](https://img.shields.io/github/languages/top/prithvish-doshi-17/application-tracking-system)
 [![Build Status](https://app.travis-ci.com/jiangyy12/application-tracking-system.svg?branch=main)](https://app.travis-ci.com/jiangyy12/application-tracking-system)
+[![codecov](https://codecov.io/gh/jiangyy12/application-tracking-system/branch/main/graph/badge.svg?token=6XIVKWMTEU)](https://codecov.io/gh/jiangyy12/application-tracking-system)
 #      J-Tracker - Your Job Tracking Assistant
 
 Click this picture to open the procedure video.
