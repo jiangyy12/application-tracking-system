@@ -25,10 +25,11 @@ before_script:
   - jobs
 
 script:
-    - pytest -v --cov=./ --cov-report=coverage.xml
+    - pytest -v --cov=./ --cov-report=xml
 
 after_success:
     - codecov
+    - bash <(curl -s https://codecov.io/bash)
 
 deploy:
   - provider: heroku
