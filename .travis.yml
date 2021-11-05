@@ -20,7 +20,10 @@ before_install:
 
 install:
   - pip3 install -r requirements.txt
+  
+before_script:
   - nohup flask run &
+  - curl http://loaclhost:5000
 script:
     - python -m pytest -v
 
