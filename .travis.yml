@@ -23,7 +23,7 @@ install:
   
 before_script:
   - nohup flask run &
-  - curl http://loaclhost:5000
+  - curl http://locallhost:5000
 script:
     - python -m pytest -v
 
