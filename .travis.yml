@@ -21,7 +21,8 @@ before_install:
 install:
   - pip3 install -r requirements.txt
 script:
-  - pytest
+    flask test
+#  - pytest
    
 after_success:
   - coveralls
