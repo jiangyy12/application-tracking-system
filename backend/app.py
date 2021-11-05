@@ -45,9 +45,6 @@ def search():
     # create a url for a crawler to fetch job information
     url = "https://www.google.com/search?q=" + keywords + "&ibp=htl;jobs"
 
-    # webdriver can run the javascript and then render the page first.
-    # This prevent websites don't provide Server-side rendering 
-    # leading to crawlers cannot fecth the page
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(url)
     content = driver.page_source
@@ -110,7 +107,6 @@ def getCompanySummaryPage():
 @app.route("/application", methods=['POST'])
 def editcsv():
     # todo: imply database
-    # path = "./data/applications.csv"
     csvTitle = ['jobTitle', 'companyName', 'date', 'class', 'id']
     tables = ['application', 'job']
     application = request.get_json()['application']
@@ -131,9 +127,6 @@ def editcsv():
         # newLine.append(application[t] if t in application else None)
 
     try:
-        # with open(path, 'a+', encoding='utf-8') as f:
-        #     writer = csv.writer(f, delimiter=',')
-        #     writer.writerow(newLine)
         for table in tables:
             insert(table, data)
 
@@ -188,9 +181,6 @@ def editDB():
         # newLine.append(application[t] if t in application else None)
 
     try:
-        # with open(path, 'a+', encoding='utf-8') as f:
-        #     writer = csv.writer(f, delimiter=',')
-        #     writer.writerow(newLine)
         for table in tables:
             insert(table, data)
 
@@ -223,13 +213,7 @@ def getDataFromDB2():
 # get the biggest id in the CSV for creating a new application
 @app.route("/getNewId", methods=['GET'])
 def getNewId():
-    path = "./data/applications.csv"
     try:
-        # f = open(path, 'r',  encoding='utf-8')
-        # rows = csv.reader(f)
-        # i = 0
-        # for row in islice(rows, 1, None):
-        #     i += 1
         i = count() + 1
         return jsonify(i)
     except Exception as e: 
@@ -240,11 +224,6 @@ def getNewId():
 def getNewProgramId():
     path = "./data/applications.csv"
     try:
-        # f = open(path, 'r',  encoding='utf-8')
-        # rows = csv.reader(f)
-        # i = 0
-        # for row in islice(rows, 1, None):
-        #     i += 1
         i = countProgram() + 1
         return jsonify(i)
     except Exception as e:
