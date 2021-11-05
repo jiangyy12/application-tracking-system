@@ -20,7 +20,7 @@ before_script:
   - jobs
 
 script:
-    - python -m pytest -v
+    - python -m pytest
 
 after_success:
     - codecov
