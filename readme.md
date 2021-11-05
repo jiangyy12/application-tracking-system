@@ -6,6 +6,10 @@
 [![Build Status](https://app.travis-ci.com/jiangyy12/application-tracking-system.svg?branch=main)](https://app.travis-ci.com/jiangyy12/application-tracking-system)
 #      J-Tracker - Your Job Tracking Assistant
 
+
+[![](https://github.com/lokesh45/TeamFormationAssistant/blob/master/Assistant.png)](https://youtu.be/J_P4uTz7U9s)
+
+
 https://user-images.githubusercontent.com/43064854/135554150-c06afd4e-d223-47e3-b123-b45f9cd1b87a.mp4
 
 If you have ever come across the process of applying for jobs and internships, you must be knowing that it's not a cakewalk. Managing the job applications is a tedious task. Our application helps you to track and manage your job application process and helps you to control your application process without the need of messy excel sheets.
